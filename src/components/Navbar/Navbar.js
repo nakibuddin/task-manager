@@ -34,7 +34,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/add-task" aria-label="Add Task" title="Add Task"
-                  className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
+                  className={ ({isActive}) => isActive ? 'font-medium text-orange-400 lg:mx-1' : 'text-white font-medium hover:text-orange-200 lg:mx-1' } 
                 >
                   Add Task
                 </NavLink>
@@ -44,7 +44,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/my-task" aria-label="My Task" title="My Task"
-                className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
+                className={ ({isActive}) => isActive ? 'font-medium text-orange-400 lg:mx-1' : 'text-white font-medium hover:text-orange-200 lg:mx-1' } 
               >
                 My Task
               </NavLink>
@@ -53,9 +53,18 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/completed-task" aria-label="Completed Task" title="Completed Task"
-                className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
+                className={ ({isActive}) => isActive ? 'font-medium text-orange-400 lg:mx-1' : 'text-white font-medium hover:text-orange-200 lg:mx-1' } 
               >
                 Completed
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/starred" aria-label="Starred" title="Starred"
+                className={ ({isActive}) => isActive ? 'font-medium text-orange-400 lg:mx-1' : 'text-white font-medium hover:text-orange-200 lg:mx-1' } 
+              >
+                Starred
               </NavLink>
             </li>
 
