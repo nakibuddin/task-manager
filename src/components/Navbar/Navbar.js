@@ -107,7 +107,7 @@ const Navbar = () => {
               
           <li>
               <NavLink
-                to="/" aria-label="Login" title="Login"
+                to="/login" aria-label="Login" title="Login"
                 className={ ({isActive}) => isActive ? 'font-medium text-orange-400 lg:mx-1' : 'text-white font-medium hover:text-orange-200 lg:mx-1' } 
               >
                 Login

@@ -5,23 +5,18 @@ import AddTask from "../components/AddTask/AddTask";
 import MyTask from "../components/MyTask/MyTask";
 import CompletedTask from "../components/CompletedTask/CompletedTask";
 import Starred from "../components/Starred/Starred";
+import Login from "../components/Login/Login";
 
 export const my_router = createBrowserRouter([
     {   path:'/', 
         element: <Main></Main>, 
         children: [
-            {path: '/', element: <AddTask></AddTask>},
-            {path: '/add-task', element: <AddTask></AddTask>},
-            {
-                path: 'my-task', 
-                loader: async () => await fetch('http://localhost:5000/incomplete') ,  
-                element: <MyTask></MyTask>
-            },
-            {
-                path: '/completed-task', 
-                loader: async () => await fetch('http://localhost:5000/complete') ,  
-                element: <CompletedTask></CompletedTask>
-            },
+            { path: '/', element: <AddTask></AddTask> },
+            { path: '/add-task', element: <AddTask></AddTask> },
+            { path: 'my-task', element: <MyTask></MyTask> },
+            { path: '/completed-task', element: <CompletedTask></CompletedTask> },
+            { path: '/login', element: <Login></Login>},
+
             {
                 path: '/starred', 
                 loader: async () => await fetch('http://localhost:5000/star') ,  
