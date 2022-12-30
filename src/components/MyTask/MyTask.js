@@ -1,6 +1,5 @@
 import React from 'react';
 import './MyTask.css'
-import { useLoaderData } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
 import { toast } from 'react-toastify';
@@ -15,16 +14,14 @@ const MyTask = () => {
     });
 
     const handleDelete = id => {
-        const agree = window.confirm(`Are you sure you want to delete this Buyer ?`);
+        const agree = window.confirm(`Are you sure you want to delete this Task ?`);
         if(agree){
             fetch(`http://localhost:5000/task/${id}`, {
                 method: 'delete',
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if(data.deletedCount === 1){                                       
-                    console.log('I am here'); 
                     toast('Task deleted', {position: toast.POSITION.TOP_CENTER});                                         
                     refetch();                                     
                 }
@@ -32,6 +29,8 @@ const MyTask = () => {
             .catch(error =>  console.error('my_fetch_delete_error: ', error) );
         }
     }
+
+    
 
     return (
         <div className='my-task md:mx-16'>
