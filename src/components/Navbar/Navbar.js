@@ -105,14 +105,13 @@ const Navbar = () => {
 
           <ul className="flex items-center hidden space-x-1 lg:flex">              
               
-            <li>
-              <a
-                href='https://drive.google.com/file/d/12mRKgmUv_B4uMMZFX9DzLL9WSQvVZwX_/view?usp=share_link' target='_blank' aria-label="Resume" title="Resume"
-                className="font-medium tracking-wide text-white hover:text-orange-200 px-4"
+          <li>
+              <NavLink
+                to="/" aria-label="Login" title="Login"
+                className={ ({isActive}) => isActive ? 'font-medium text-orange-400 lg:mx-1' : 'text-white font-medium hover:text-orange-200 lg:mx-1' } 
               >
                 Login
-              </a>
-
+              </NavLink>
             </li>  
 
           </ul>
