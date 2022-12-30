@@ -6,6 +6,7 @@ import MyTask from "../components/MyTask/MyTask";
 import CompletedTask from "../components/CompletedTask/CompletedTask";
 import Starred from "../components/Starred/Starred";
 import Login from "../components/Login/Login";
+import Register from "../components/Register/Register";
 
 export const my_router = createBrowserRouter([
     {   path:'/', 
@@ -16,6 +17,7 @@ export const my_router = createBrowserRouter([
             { path: 'my-task', element: <MyTask></MyTask> },
             { path: '/completed-task', element: <CompletedTask></CompletedTask> },
             { path: '/login', element: <Login></Login>},
+            { path: '/register', element: <Register></Register>},
 
             {
                 path: '/starred', 

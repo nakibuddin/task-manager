@@ -1,48 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
     const handleGoogleLogIn = () => {
         // LogInWithGoogle()
-        // .then(result => {
-        //     console.log(result.user);
-        //     navigate(from, {replace: true});
-        // })
+        // .then(result => console.log(result.user))
         // .catch(error => console.error('my_google_login_error: ', error));
     }
 	const handleGithubLogIn = () => {
         // LogInWithGithub()
-        // .then(result => {
-        //     console.log(result.user);
-        //     navigate(from, {replace: true});
-        // })
+        // .then(result => console.log(result.user))
         // .catch(error => console.error('my_github_login_error: ', error));
     }
-	const handleLogIn = event => {
+	const handleRegister = event => {
         // event.preventDefault();
-        // const form = event.target;        
+        // const form = event.target;
+        // const name = form.name.value;
+        // // const photoURL = form.photoURL.value;
         // const email = form.email.value;
         // const password = form.password.value;
-        // console.log(email, password);
+        // console.log(name, email, password);
 
-        // logIn(email, password)
+        // createUser(email, password)
         // .then(result => {
         //     console.log(result.user);
-        //     navigate(from, {replace: true});
-        //     setLoginError('');
+        //     event.target.reset();
+        //     navigate('/');
+        //     setRegisterError(null);
         // })
-        // .catch(error => {            
-        //     console.error('my_github_login_error: ', error);
-        //     setLoading(false);
-        //     setLoginError(error.message);
+        // .catch(error => {
+        //     console.error('my_register_error: ', error);
+        //     setRegisterError(error.message);
         // });
     }
 
     return (
-        <div className="w-full block mx-auto max-w-md p-4 rounded-md shadow sm:p-8  bg-gray-900  text-gray-100">
-			<h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
-			<p className="text-sm text-center  text-gray-400">Dont have account?
-				<Link to='/register' className="focus:underline hover:underline"> Create an account</Link>
+		<div className="w-full block mx-auto max-w-md p-4 rounded-md shadow sm:p-8  bg-gray-900  text-gray-100">
+			<h2 className="mb-3 text-3xl font-semibold text-center">Create an account</h2>
+			<p className="text-sm text-center  text-gray-400">Already have an account?
+                <Link to='/login' className="focus:underline hover:underline"> Login</Link>
 			</p>
 			<div className="my-6 space-y-4">
 				<button onClick={handleGoogleLogIn} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1  border-gray-400 focus:ring-violet-400">
@@ -64,28 +60,47 @@ const Login = () => {
 				<p className="px-3  text-gray-400">OR</p>
 				<hr className="w-full  text-gray-400"/>
 			</div>
-			<form onSubmit={handleLogIn} noValidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
-				<div className="space-y-4">
+			<form onSubmit={handleRegister} noValidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
+				
+                <div className="space-y-4">
+
+                    <div className="space-y-2">
+						<label htmlFor="name" className="block text-sm">Full Name</label>
+						<input type="text" name="name" id="name" className="w-full px-3 py-2 border rounded-md  border-gray-700  bg-gray-900  text-gray-100 focus: border-violet-400" required/>
+					</div>
 					<div className="space-y-2">
 						<label htmlFor="email" className="block text-sm">Email address</label>
-						<input type="email" name="email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md  border-gray-700  bg-gray-900  text-gray-100 focus: border-violet-400" required/>
+						<input type="email" name="email" id="email" placeholder="sakib@gamil.com" className="w-full px-3 py-2 border rounded-md  border-gray-700  bg-gray-900  text-gray-100 focus: border-violet-400" required/>
 					</div>
 					<div className="space-y-2">
 						<div className="flex justify-between">
-							<label htmlFor="password" className="text-sm">Password</label>
-							{/* <a href='/' rel="noopener noreferrer" className="text-xs hover:underline  text-gray-400">Forgot password?</a> */}
+							<label htmlFor="password" className="text-sm">Password</label>							
 						</div>
-						<input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md  border-gray-700  bg-gray-900  text-gray-100 focus: border-violet-400" required/>
+						<input type="password" name="password" id="password" minLength="8" placeholder="*****" className="w-full px-3 py-2 border rounded-md  border-gray-700  bg-gray-900  text-gray-100 focus: border-violet-400" required/>
 					</div>
-					<div>
-						{/* <p className='text-red-600'>{loginError}</p> */}
-					</div>
-
+                    <div className="space-y-2">
+                        <div className="flex justify-between">
+							<label htmlFor="password" className="text-sm">Join Sell Today as a</label>							
+						</div>
+                        <select id="cars" name="role" className='className="w-full px-3 py-2 border rounded-md  border-gray-700  bg-gray-900  text-gray-100 focus: border-violet-400"'>
+                            <option value="volvo">Buyer</option>
+                            <option value="saab">Seller</option>
+                        </select>
+                    </div>
+					{/* {
+						registerError &&
+						<div>
+							<p className='text-red-600'>{registerError}</p>
+						</div>
+					} */}
+					
 				</div>
-				<button type="submit" className="w-full px-8 py-3 font-semibold rounded-md  bg-violet-400  text-gray-900">Log in</button>
+
+				
+				<button type="submit" className="w-full px-8 py-3 font-semibold rounded-md  bg-violet-400  text-gray-900">Create an account</button>
 			</form>
 		</div>
     );
 };
 
-export default Login;
+export default Register;
