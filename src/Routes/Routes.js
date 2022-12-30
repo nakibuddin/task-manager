@@ -11,10 +11,22 @@ export const my_router = createBrowserRouter([
         element: <Main></Main>, 
         children: [
             {path: '/', element: <AddTask></AddTask>},
-            {path: 'add-task', element: <AddTask></AddTask>},
-            {path: 'my-task', element: <MyTask></MyTask>},
-            {path: 'completed-task', element: <CompletedTask></CompletedTask>},
-            {path: 'starred', element: <Starred></Starred>},
+            {path: '/add-task', element: <AddTask></AddTask>},
+            {
+                path: 'my-task', 
+                loader: async () => await fetch('http://localhost:5000/incomplete') ,  
+                element: <MyTask></MyTask>
+            },
+            {
+                path: '/completed-task', 
+                loader: async () => await fetch('http://localhost:5000/complete') ,  
+                element: <CompletedTask></CompletedTask>
+            },
+            {
+                path: '/starred', 
+                loader: async () => await fetch('http://localhost:5000/star') ,  
+                element: <Starred></Starred>
+            },
 
             {path: '*', element: <PageNotFound></PageNotFound>}
         ]
