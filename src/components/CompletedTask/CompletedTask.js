@@ -7,9 +7,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const CompletedTask = () => {
 
     const {data: tasks = [], refetch} = useQuery({
-        queryKey: [],
+        queryKey: ['complete'],
         queryFn: async() => fetch('http://localhost:5000/complete')
         .then(res => res.json())
+        .catch(error =>  console.error('my_fetch get error: ', error) )
     });
 
     const handleDelete = id => {
