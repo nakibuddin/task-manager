@@ -1,12 +1,36 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditTask = () => {
 	const defaultTask = useLoaderData();
+	const navigate = useNavigate();
 
 	const handleSubmit = event => {
-		
-	}
+        event.preventDefault();
+		const body = event.target.body.value;
+		const url = event.target.url.value;
+		const updatedTask = {body,url};
+
+        fetch(`http://localhost:5000/edit-task/${defaultTask._id}`, {
+			method: 'PUT',
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify(updatedTask)
+        })
+        .then(res => res.json())
+
+        .then(data => {
+			if(data.matchedCount === 1){
+				toast.success('Task deleted', {position: toast.POSITION.TOP_CENTER});
+				navigate('/my-task');
+			}
+        })
+        .catch(error =>  console.error('my_fetch update error: ', error) );
+    }
 
     return (
         <div className='add-task md:mx-72'>

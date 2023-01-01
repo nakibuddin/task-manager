@@ -14,10 +14,10 @@ const AddTask = () => {
 		const url = event.target.url.value;
 		const task = {body, url, status: 'incomplete', star: 'no'};
 		
-		fetch('http://localhost:5000/task',{
+		fetch('http://localhost:5000/add-task',{
 			method : 'POST',
 			headers : {
-				'Content-Type' : 'application/json'
+				'content-type' : 'application/json'
 			},
 			body :  JSON.stringify(task)
 		})

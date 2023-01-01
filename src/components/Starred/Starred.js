@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -18,7 +18,7 @@ const Starred = () => {
     const handleDelete = id => {
         const agree = window.confirm('Are you sure you want to delete this Task ?');
         if(agree) {
-            fetch(`http://localhost:5000/task/${id}`, {
+            fetch(`http://localhost:5000/delete-task/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -40,7 +40,9 @@ const Starred = () => {
                     
                     <h2>{task.body}</h2>
                     <div className='mt-2 text-center flex items-start'>
-                        <button className='border border-sky-500 rounded px-8 ml-3 hover:bg-sky-500 hover:text-white'>Edit</button>
+                        <Link to={`/edit-task/${task._id}`}>
+                            <button className='border border-sky-500 rounded px-8 ml-3 hover:bg-sky-500 hover:text-white'>Edit</button>
+                        </Link>
                         <button className='border border-sky-500 rounded px-3 ml-3 hover:bg-sky-500 hover:text-white'>Complete</button>
                         <button onClick={() => handleDelete(task._id)} className='border border-red-600 rounded px-5 ml-3 hover:bg-red-600 hover:text-white'>Delete</button>
                         {/* <button className='border border-red-600 rounded px-2 ml-3 hover:bg-red-600 hover:text-white'>star</button> */}

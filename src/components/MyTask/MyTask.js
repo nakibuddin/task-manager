@@ -1,13 +1,12 @@
 import React from 'react';
 import './MyTask.css'
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
 
 const MyTask = () => {
-
     const {data: tasks, isLoading, refetch} = useQuery({
         queryKey: ['incomplete'],
         queryFn: async() => fetch('http://localhost:5000/incomplete')
@@ -18,7 +17,7 @@ const MyTask = () => {
     const handleDelete = id => {
         const agree = window.confirm(`Are you sure you want to delete this Task ?`);
         if(agree){
-            fetch(`http://localhost:5000/task/${id}`, {
+            fetch(`http://localhost:5000/delete-task/${id}`, {
                 method: 'delete',
             })
             .then(res => res.json())
@@ -30,18 +29,6 @@ const MyTask = () => {
             })
             .catch(error =>  console.error('my_fetch delete error: ', error) );
         }
-    }
-
-    const handleComplete = id => {
-        
-        fetch('http://localhost:5000/', {
-
-        })
-        .then(res => res.json())
-        .then(data => {
-
-        })
-        .catch(error =>  console.error('my_fetch update error: ', error) );
     }
     
     if(isLoading){
@@ -59,7 +46,7 @@ const MyTask = () => {
                         <Link to={`/edit-task/${task._id}`}>
                             <button className='border border-sky-500 rounded px-8 ml-3 hover:bg-sky-500 hover:text-white'>Edit</button>
                         </Link>
-                        <button onClick={() => handleComplete(task?._id)} className='border border-sky-500 rounded px-3 ml-3 hover:bg-sky-500 hover:text-white'>Complete</button>
+                        <button className='border border-sky-500 rounded px-3 ml-3 hover:bg-sky-500 hover:text-white'>Complete</button>
                         <button onClick={() => handleDelete(task?._id)} className='border border-red-600 rounded px-5 ml-3 hover:bg-red-600 hover:text-white'>Delete</button>
                         {/* <button className='border border-red-600 rounded px-2 ml-3 hover:bg-red-600 hover:text-white'>star</button> */}
                     </div>
