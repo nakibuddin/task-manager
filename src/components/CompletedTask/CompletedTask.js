@@ -31,6 +31,7 @@ const CompletedTask = () => {
         }
     }
 
+    
 
     return (
         <div className='my-task md:mx-16'>
@@ -43,7 +44,7 @@ const CompletedTask = () => {
                         <Link to={`/edit-task/${task._id}`}>
                             <button className='border border-sky-500 rounded px-8 ml-3 hover:bg-sky-500 hover:text-white'>Edit</button>
                         </Link>
-                        <button className='border border-sky-500 rounded px-3 ml-3 hover:bg-sky-500 hover:text-white'>Mark Uncompleted</button>
+                        <button  className='border border-sky-500 rounded px-3 ml-3 hover:bg-sky-500 hover:text-white'>Mark Uncompleted</button>
                         <button onClick={() => handleDelete(task?._id)} className='border border-red-600 rounded px-5 ml-3 hover:bg-red-600 hover:text-white'>Delete</button>
                         {/* <button className='border border-red-600 rounded px-2 ml-3 hover:bg-red-600 hover:text-white'>star</button> */}
                     </div>
