@@ -38,6 +38,7 @@ const CompletedTask = () => {
         .then(res => res.json())
         .then(data => {
             if(data.matchedCount === 1){
+                toast.success('Task uncompleted', {position: toast.POSITION.TOP_CENTER});
                 refetch();
             }
         })
