@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './MyTask.css'
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
@@ -87,7 +87,6 @@ const MyTask = () => {
                     <h2>{task.body}</h2>
                     <div className='mt-2 text-center flex items-start'>
                         <StarIcon onClick={() => handleStar(task?._id, task?.star)} className={`h-6 w-6 cursor-pointer ${task.star==='yes' ? "text-amber-400" : "text-gray-300" }`}/>
-
                         <button onClick={() => handleComplete(task?._id)} className='border border-sky-500 rounded px-3 ml-3 hover:bg-sky-500 hover:text-white'>Complete</button>
                         <Link to={`/edit-task/${task._id}`}>
                             <button className='border border-sky-500 rounded px-8 ml-3 hover:bg-sky-500 hover:text-white'>Edit</button>
