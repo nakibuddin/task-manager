@@ -34,6 +34,20 @@ const Starred = () => {
         }
     }
 
+    const handleComplete = id => {
+        fetch(`http://localhost:5000/complete-task/${id}`, {
+			method: 'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.matchedCount === 1){
+                toast.success('Task completed', {position: toast.POSITION.TOP_CENTER});
+                refetch();
+            }
+        })
+        .catch(error =>  console.error('my_fetch update error: ', error) );
+    }
+    
     const handleStar = (id, defaultStar) => {
         let updatedStar = null;
         if(defaultStar === 'yes'){
@@ -68,7 +82,7 @@ const Starred = () => {
                     <h2>{task.body}</h2>
                     <div className='mt-2 text-center flex items-start'>
                         <StarIcon onClick={() => handleStar(task?._id, task?.star)} className={`h-6 w-6 cursor-pointer ${task.star==='yes' ? "text-amber-400" : "text-gray-300" }`}/>
-                        <button className='border border-sky-500 rounded px-3 ml-3 hover:bg-sky-500 hover:text-white'>Complete</button>
+                        <button onClick={() => handleComplete(task?._id)} className='border border-sky-500 rounded px-3 ml-3 hover:bg-sky-500 hover:text-white'>Complete</button>
                         <Link to={`/edit-task/${task._id}`}>
                             <button className='border border-sky-500 rounded px-8 ml-3 hover:bg-sky-500 hover:text-white'>Edit</button>
                         </Link>
